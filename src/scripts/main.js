@@ -1,5 +1,4 @@
 const axios = require('axios');
-const paint = require('./paint.js');
 const construct = require('./construct.js');
 
 // Draws an image on the given canvas by using BFS or DFS algorithms to color
@@ -13,15 +12,17 @@ function draw(canvas) {
         height: canvas.height,
         width: canvas.width,
     });
-    paint(image, {
+    const painter = new Worker('scripts/painter.js');
+    painter.postMessage({
+        image: image,
         color: '#FF0000',
         probs: 0.4,
         delta: 3,
         row: 250,
         col: 250,
     });
-    ctx.putImageData(convert(
-        image, ctx.createImageData(canvas.width, canvas.height)), 0, 0);
+    painter.onmessage = (image) => ctx.putImageData(convert(
+        image.data, ctx.createImageData(canvas.width, canvas.height)), 0, 0);
 };
 
 // Converts the given two-dimensional array into a one-dimensional array used to

@@ -106,5 +106,28 @@ module.exports = [{
             }]
         },
         watch: true,
+    },
+    {
+        entry: {
+            'painter.js': [
+                path.resolve(__dirname, 'scripts/painter.js'),
+            ]
+        },
+        output: {
+            filename: '[name]',
+            path: path.resolve(__dirname, '../build/scripts/'),
+        },
+        module: {
+            rules: [{
+                test: /\.js$/,
+                use: [{
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['es2015']
+                    },
+                }],
+            }]
+        },
+        watch: true,
     }
 ];

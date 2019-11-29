@@ -6,7 +6,7 @@ const bfs = require('./bfs.js');
 //
 // @param {2D Array} image
 //   A two-dimensional array representation of the pixels of the image.
-function paint(image, params) {
+function paint(image, params, refresh) {
     const color = hexToRGB(params.color || '#FFFFFF');
     class Problem {
         // define where we are drawing initially
@@ -26,7 +26,7 @@ function paint(image, params) {
             return 'paint problem with initial color (' + params.color + ')';
         }
     }
-    dfs(new Problem(), params);
+    dfs(new Problem(), params, refresh);
 };
 
 module.exports = paint;

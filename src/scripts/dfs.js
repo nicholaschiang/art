@@ -3,12 +3,13 @@ function id(node) {
     return node.row + 1000 * node.col;
 };
 
-function dfs(problem, params) { // See https://bit.ly/34wjnGY
+function dfs(problem, params, refresh) { // See https://bit.ly/34wjnGY
     const closed = new Set();
     const probs = params.probs || 0.5;
     const delta = params.delta || 3;
     const speed = params.speed || 1e-1000;
     const fringe = [problem.startState()];
+    var times = 0;
 
     while (fringe.length > 0) {
         var node = fringe[Math.floor(Math.random() * fringe.length)];
@@ -40,6 +41,8 @@ function dfs(problem, params) { // See https://bit.ly/34wjnGY
 
         // mark the state as visited
         closed.add(id(node));
+        if (times % 10000 == 0) refresh();
+        times++;
     }
 }
 
