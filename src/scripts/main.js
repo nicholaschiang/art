@@ -1,4 +1,6 @@
 const axios = require('axios');
+const paint = require('./paint.js');
+const construct = require('./construct.js');
 
 // Draws an image on the given canvas by using BFS or DFS algorithms to color
 // each pixel.
@@ -7,26 +9,19 @@ const axios = require('axios');
 //   The canvas to draw the image unto
 function draw(canvas) {
     const ctx = canvas.getContext('2d');
-    axios({
-        method: 'get',
-        url: 'https://us-central1-auto-artonomous.cloudfunctions.net/paint',
-        params: {
-            height: canvas.height,
-            width: canvas.width,
-            color: '#FF0000',
-            probs: 0.4,
-            delta: 3,
-            row: 300,
-            col: 200,
-        },
-    }).then((res) => {
-        document.getElementById('preloader').parentNode.removeChild(
-            document.getElementById('preloader'));
-        ctx.putImageData(convert(
-            res.data, ctx.createImageData(canvas.width, canvas.height)), 0, 0);
-    }).catch((err) => {
-        console.error('[ERROR] Could not fetch image ', err);
+    const image = construct({
+        height: canvas.height,
+        width: canvas.width,
     });
+    paint(image, {
+        color: '#FF0000',
+        probs: 0.4,
+        delta: 3,
+        row: 250,
+        col: 250,
+    });
+    ctx.putImageData(convert(
+        image, ctx.createImageData(canvas.width, canvas.height)), 0, 0);
 };
 
 // Converts the given two-dimensional array into a one-dimensional array used to
