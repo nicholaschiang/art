@@ -83,6 +83,7 @@ onmessage = function onmessage(params) {
     paint(params.data.image, params.data, function () {
         return postMessage(params.data.image);
     });
+    postMessage(params.data.image);
 };
 
 /***/ }),

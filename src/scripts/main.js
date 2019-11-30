@@ -15,11 +15,11 @@ function draw(canvas) {
     const painter = new Worker('scripts/painter.js');
     painter.postMessage({
         image: image,
-        color: '#FF0000',
+        color: '#00FFFF',
         probs: 0.4,
-        delta: 3,
-        row: 250,
-        col: 250,
+        delta: 1,
+        row: 500,
+        col: 500,
     });
     painter.onmessage = (image) => ctx.putImageData(convert(
         image.data, ctx.createImageData(canvas.width, canvas.height)), 0, 0);

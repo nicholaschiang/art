@@ -21,4 +21,10 @@ project](https://www.youtube.com/watch?time_continue=2&v=jc7NQ3sNN58&feature=emb
 ![Eric Design
 3](https://github.com/nicholaschiang/art/blob/master/docs/eric3.png)
 
-![Our Website](https://github.com/nicholaschiang/art/blob/master/docs/me1.png)
+![Our Website 1](https://github.com/nicholaschiang/art/blob/master/docs/me1.png)
+
+![Our Website 2](https://github.com/nicholaschiang/art/blob/master/docs/me2.png)
+
+![Our Website 3](https://github.com/nicholaschiang/art/blob/master/docs/me3.png)
+
+![Our Website 4](https://github.com/nicholaschiang/art/blob/master/docs/me4.png)
